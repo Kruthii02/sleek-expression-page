@@ -33,7 +33,7 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-card/80 backdrop-blur-lg shadow-soft' : 'bg-transparent'
+      isScrolled ? 'bg-card/90 backdrop-blur-lg shadow-soft border-b border-border' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -60,7 +60,7 @@ const Navigation = () => {
             <Button 
               onClick={() => scrollToSection("#contact")}
               variant="outline" 
-              className="border-primary text-primary hover:bg-primary hover:text-white"
+              className="border-primary text-primary hover:bg-primary"
             >
               Hire Me
             </Button>
@@ -81,7 +81,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 w-full bg-card/95 backdrop-blur-lg border-t shadow-soft">
+          <div className="md:hidden absolute top-16 left-0 w-full bg-card/95 backdrop-blur-lg border-t border-border shadow-soft">
             <div className="py-4 space-y-2">
               {navItems.map((item) => (
                 <button
@@ -95,7 +95,7 @@ const Navigation = () => {
               <div className="px-6 pt-4">
                 <Button 
                   onClick={() => scrollToSection("#contact")}
-                  className="w-full hero-button text-white"
+                  className="w-full hero-button"
                 >
                   Hire Me
                 </Button>

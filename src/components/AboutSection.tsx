@@ -10,16 +10,16 @@ const AboutSection = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Profile Image Placeholder */}
+            {/* Profile Image Placeholder with vibrant gradient */}
             <div className="relative">
-              <div className="w-full max-w-md mx-auto aspect-square bg-gradient-primary rounded-3xl p-1">
+              <div className="w-full max-w-md mx-auto aspect-square bg-gradient-purple rounded-3xl p-1 shadow-vibrant">
                 <div className="w-full h-full bg-card rounded-3xl flex items-center justify-center">
                   <div className="text-6xl">👨‍💻</div>
                 </div>
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
+              {/* Decorative elements with enhanced colors */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/40 rounded-full blur-xl shadow-glow"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/40 rounded-full blur-xl shadow-vibrant"></div>
             </div>
             
             {/* About Content */}

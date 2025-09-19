@@ -78,8 +78,10 @@ const ProjectsSection = () => {
                 key={project.title} 
                 className="project-card p-0 overflow-hidden bg-card border-0"
               >
-                {/* Project Image/Icon */}
-                <div className="h-48 bg-gradient-primary relative flex items-center justify-center">
+                {/* Project Image/Icon with dynamic gradient */}
+                <div className={`h-48 relative flex items-center justify-center ${
+                  index % 2 === 0 ? 'bg-gradient-primary' : 'bg-gradient-accent'
+                }`}>
                   <div className="text-6xl">{project.image}</div>
                   <div className="absolute inset-0 bg-black/20"></div>
                 </div>

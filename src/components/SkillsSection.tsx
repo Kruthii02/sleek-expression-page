@@ -100,10 +100,14 @@ const SkillsSection = () => {
               Currently Working With
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
-              {["React", "TypeScript", "Node.js", "PostgreSQL", "AWS", "Docker"].map((tech) => (
+              {["React", "TypeScript", "Node.js", "PostgreSQL", "AWS", "Docker"].map((tech, index) => (
                 <div 
                   key={tech}
-                  className="px-6 py-3 bg-gradient-primary text-white rounded-full font-medium shadow-soft hover:shadow-glow transition-all duration-300"
+                  className={`px-6 py-3 rounded-full font-medium shadow-soft hover:shadow-glow transition-all duration-300 ${
+                    index % 3 === 0 ? 'bg-gradient-primary' : 
+                    index % 3 === 1 ? 'bg-gradient-accent' : 
+                    'bg-gradient-purple'
+                  }`}
                 >
                   {tech}
                 </div>

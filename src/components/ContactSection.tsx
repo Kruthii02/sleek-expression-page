@@ -138,7 +138,7 @@ const ContactSection = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full hero-button text-white font-medium py-3"
+                  className="w-full hero-button font-medium py-3"
                 >
                   Send Message
                 </Button>
