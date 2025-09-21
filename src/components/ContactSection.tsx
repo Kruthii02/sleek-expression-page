@@ -4,8 +4,71 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('messages')
+        .insert([
+          {
+            name: `${formData.firstName} ${formData.lastName}`.trim(),
+            email: formData.email,
+            message: `Subject: ${formData.subject}\n\n${formData.message}`
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error sending message",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
@@ -87,22 +150,28 @@ const ContactSection = () => {
             
             {/* Contact Form */}
             <Card className="p-8 glass-card">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
                     <Input 
                       id="firstName" 
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       placeholder="John" 
                       className="border-border focus:ring-primary"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
                     <Input 
                       id="lastName" 
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       placeholder="Doe" 
                       className="border-border focus:ring-primary"
+                      required
                     />
                   </div>
                 </div>
@@ -112,8 +181,11 @@ const ContactSection = () => {
                   <Input 
                     id="email" 
                     type="email" 
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="john.doe@example.com"
-                    className="border-border focus:ring-primary" 
+                    className="border-border focus:ring-primary"
+                    required
                   />
                 </div>
                 
@@ -121,8 +193,11 @@ const ContactSection = () => {
                   <Label htmlFor="subject">Subject</Label>
                   <Input 
                     id="subject" 
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     placeholder="Project Collaboration"
-                    className="border-border focus:ring-primary" 
+                    className="border-border focus:ring-primary"
+                    required
                   />
                 </div>
                 
@@ -130,17 +205,21 @@ const ContactSection = () => {
                   <Label htmlFor="message">Message</Label>
                   <Textarea 
                     id="message" 
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Tell me about your project..."
                     rows={5}
                     className="border-border focus:ring-primary resize-none"
+                    required
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
+                  disabled={isSubmitting}
                   className="w-full hero-button font-medium py-3"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </Card>
