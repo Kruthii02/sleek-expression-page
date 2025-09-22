@@ -35,8 +35,11 @@ const HeroSection = () => {
               variant="outline" 
               size="lg" 
               className="px-8 py-3 text-lg border-primary text-primary hover:bg-primary"
+              asChild
             >
-              Download CV
+              <a href="/KRUTHIKA_K_Resume.pdf" download="KRUTHIKA_K_Resume.pdf">
+                Download CV
+              </a>
             </Button>
           </div>
           
