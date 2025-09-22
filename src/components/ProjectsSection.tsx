@@ -5,59 +5,31 @@ import { ExternalLink, Github } from "lucide-react";
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include real-time inventory, payment processing, and admin dashboard.",
-      image: "🛒",
-      tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: "Personal Finance Tracker",
+      description:"A user-friendly web application to manage personal finances effectively. Track income, expenses, budgets, and savings with intuitive charts and reports. Helps users make smarter financial decisions, set goals, and stay on top of their financial health.",
+      image: "📈",
+      tags: ["React", "Node.ja", "CSS"],
+      githubUrl: "https://github.com/Kruthii02/personal-finance-tracker02.git",
       featured: true
     },
     {
       title: "Task Management App",
       description: "Collaborative project management tool with real-time updates, team collaboration features, and intuitive drag-and-drop interface.",
       image: "📋",
-      tags: ["Vue.js", "Firebase", "WebSockets", "PWA"],
-      liveUrl: "#",
-      githubUrl: "#",
+      tags: ["React.js", "Supabase"],
+      githubUrl: "https://github.com/Kruthii02/live-task-share.git",
       featured: true
     },
-    {
-      title: "Weather Dashboard",
-      description: "Beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics with clean UI design.",
-      image: "🌤️",
-      tags: ["React", "API Integration", "Charts.js", "Responsive"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false
-    },
+    
     {
       title: "Portfolio Website",
-      description: "Modern portfolio website showcasing responsive design, smooth animations, and optimized performance with excellent SEO.",
+      description: "Modern portfolio website showcasing responsive design, smooth animations, and optimized performance.",
       image: "💼",
-      tags: ["Next.js", "Tailwind", "Framer Motion", "SEO"],
-      liveUrl: "#",
-      githubUrl: "#",
+      tags: ["React.js", "Tailwind","Supabase,Vercel"],
+      githubUrl: "https://github.com/Kruthii02/sleek-expression-page.git",
       featured: false
     },
-    {
-      title: "Chat Application",
-      description: "Real-time messaging application with group chats, file sharing, emoji reactions, and end-to-end encryption.",
-      image: "💬",
-      tags: ["Socket.io", "React", "Express", "MongoDB"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false
-    },
-    {
-      title: "Learning Platform",
-      description: "Educational platform with course management, progress tracking, quizzes, and interactive learning materials.",
-      image: "📚",
-      tags: ["React", "Django", "PostgreSQL", "Video Streaming"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false
-    }
+   
   ];
 
   const featuredProjects = projects.filter(project => project.featured);
@@ -110,15 +82,8 @@ const ProjectsSection = () => {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="flex items-center gap-2 hover:bg-primary hover:text-white"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
                       className="flex items-center gap-2 hover:bg-secondary hover:text-white"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
                     >
                       <Github className="w-4 h-4" />
                       Code
@@ -162,11 +127,12 @@ const ProjectsSection = () => {
                   </div>
                   
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="flex-1 text-xs">
-                      <ExternalLink className="w-3 h-3 mr-1" />
-                      Demo
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1 text-xs">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex-1 text-xs"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
                       <Github className="w-3 h-3 mr-1" />
                       Code
                     </Button>
