@@ -1,4 +1,6 @@
 import { Card } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const AboutSection = () => {
   return (
@@ -10,11 +12,20 @@ const AboutSection = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Profile Image Placeholder with vibrant gradient */}
+            {/* Profile Image with vibrant gradient */}
             <div className="relative">
               <div className="w-full max-w-md mx-auto aspect-square bg-gradient-purple rounded-3xl p-1 shadow-vibrant">
-                <div className="w-full h-full bg-card rounded-3xl flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+                <div className="w-full h-full bg-card rounded-3xl overflow-hidden">
+                  <Avatar className="w-full h-full rounded-3xl">
+                    <AvatarImage 
+                      src={profilePhoto} 
+                      alt="Profile photo" 
+                      className="object-cover w-full h-full rounded-3xl"
+                    />
+                    <AvatarFallback className="w-full h-full rounded-3xl bg-muted flex items-center justify-center text-6xl">
+                      👨‍💻
+                    </AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
               {/* Decorative elements with enhanced colors */}
